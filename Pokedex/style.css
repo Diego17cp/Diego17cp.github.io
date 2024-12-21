@@ -93,7 +93,7 @@ main {
     border-radius: 50%;
     height: 40px;
     width: 40px;
-    border: 2px solid gray;
+    border: 3px solid rgb(87, 78, 78);
     margin-top: 10px;
 }
 .lights-container {
@@ -107,15 +107,25 @@ main {
     width: 15px;
     margin-top: 10px;
     border-radius: 50%;
+    border:3px solid rgb(102, 92, 92);
 }
 .light:nth-child(1) {
-    background-color: rgb(110, 25, 78);
+    background-color: #77063d;
 }
 .light:nth-child(2) {
     background-color: yellow;
 }
 .light:nth-child(3) {
-    background-color: yellowgreen;
+    background-color: green;
+}
+.light:nth-child(1).animated {
+    animation: blink-red 900ms infinite;
+}
+.light:nth-child(2).animated {
+    animation: blink-yellow 1s infinite;
+}
+.light:nth-child(3).animated {
+    animation: blink-green 1s infinite;
 }
 /* Lil div for form the camera section */
 .cam-back {
@@ -372,6 +382,40 @@ form {
 
 .fairy {
     background-color: #ed99ed;
+}
+/* Animation for lights above */
+@keyframes blink-red {
+    0% {
+        background-color: #77063d;
+    }
+    50% {
+        background-color: #d44281;
+    }
+    100% {
+        background-color: #77063d;
+    }
+}
+@keyframes blink-yellow {
+    0% {
+        background-color: yellow;
+    }
+    50% {
+        background-color: rgb(250, 250, 191);
+    }
+    100% {
+        background-color: yellow;
+    }
+}
+@keyframes blink-green {
+    0% {
+        background-color: green;
+    }
+    50% {
+        background-color: lightgreen;
+    }
+    100% {
+        background-color: green;
+    }
 }
 
 @media only screen and (max-width: 730px) {

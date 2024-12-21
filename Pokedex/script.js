@@ -63,10 +63,19 @@ const cleanAll = () => {
 	spDefElement.textContent = ``;
 	speedElement.textContent = ``;
 };
+
+const animateLights=()=>{
+    const lights=document.querySelectorAll(".light");
+    lights.forEach(light=>{
+        light.classList.toggle("animated");
+    });
+}
 searchBtn.addEventListener("click", () => {
 	getPoke();
+    animateLights();
 });
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     getPoke();
+    animateLights();
 });
