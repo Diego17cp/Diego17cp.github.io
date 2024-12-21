@@ -465,7 +465,6 @@ form {
     }
     form {
         gap: 1px;
-
         flex-wrap: wrap;
         padding: 5px;
     }
@@ -476,6 +475,7 @@ form {
     #search-input{
         height: 30px;
         font-size: 0.8rem;
-        margin-bottom: 60px;
+        margin-top: 10px;
+        margin-bottom: 30px;
     }
 }
