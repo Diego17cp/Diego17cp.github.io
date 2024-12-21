@@ -12,6 +12,7 @@ const spAtElement = document.getElementById("special-attack");
 const spDefElement = document.getElementById("special-defense");
 const speedElement = document.getElementById("speed");
 const imgDisplay = document.getElementById("img-display");
+const form=document.getElementById("form");
 
 // Function for get the pokemons
 
@@ -65,8 +66,7 @@ const cleanAll = () => {
 searchBtn.addEventListener("click", () => {
 	getPoke();
 });
-searchInput.addEventListener("keydown", (e) => {
-	if (e.key === "Enter") {
-		getPoke();
-	}
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    getPoke();
 });
