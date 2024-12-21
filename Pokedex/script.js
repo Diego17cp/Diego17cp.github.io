@@ -34,8 +34,10 @@ const getPoke = async () => {
 					`<div class="type ${pkmn.type.name}">${pkmn.type.name}</div>`
 			)
 			.join("");
-		weightElement.textContent = `Weight: ${data.weight}g`;
-		heightElement.textContent = `Height: ${data.height}cm`;
+        const weightInKg = data.weight / 10
+        const heightInM = data.height / 10
+		weightElement.textContent = `Weight: ${weightInKg}kg`;
+		heightElement.textContent = `Height: ${heightInM}m`;
 		hpElement.textContent = `HP: ${data.stats[0].base_stat}`;
 		attackElement.textContent = `Attack: ${data.stats[1].base_stat}`;
 		defenseElement.textContent = `Defense: ${data.stats[2].base_stat}`;
