@@ -1,3 +1,4 @@
+// Obtain the elements from the HTML
 const searchInput = document.getElementById("search-input");
 const searchBtn = document.getElementById("search-button");
 const nameElement = document.getElementById("pokemon-name");
@@ -24,9 +25,28 @@ const getPoke = async () => {
 			`https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/${pkmnNameOrId}`
 		);
 		const data = await response.json();
-
-		imgDisplay.innerHTML = `<img id="sprite" src="${data.sprites.front_default}" alt="${data.name} front default sprite">`;
-
+        // Obtain the sprites from the API
+        const frontSprite=data.sprites.front_default;
+        const backSprite=data.sprites.back_default;
+        // Display the sprites
+		imgDisplay.innerHTML = `<img id="sprite" src="${frontSprite}" alt="${data.name} front default sprite">`;
+        // Obtain the new sprite element
+        const sprite=document.getElementById("sprite");
+        // Set the sprite to change every 3 seconds
+        let isFront=true;
+        setInterval(
+            ()=>{
+                if(isFront){
+                    sprite.src=backSprite;
+                    sprite.alt=`${data.name} back default sprite`;
+                } else{
+                    sprite.src=frontSprite;
+                    sprite.alt=`${data.name} front default sprite`;
+                }
+                isFront=!isFront;
+            },3000
+        )
+        // Display the data of the pokemon on the little pokedex
 		nameElement.textContent = `${data.name.toUpperCase()}`;
 		idElement.textContent = `#${data.id < 100 ? `0${data.id}` : data.id}`;
 		typesContainer.innerHTML = data.types
@@ -46,12 +66,14 @@ const getPoke = async () => {
 		spDefElement.textContent = `Special Defense: ${data.stats[4].base_stat}`;
 		speedElement.textContent = `Speed: ${data.stats[5].base_stat}`;
 	} catch (err) {
+        // If the pokemon is not found, clean the pokedex and show an alert
 		cleanAll();
 		alert(`Pokemon not found`);
 		console.log(err);
 		return;
 	}
 };
+// Function for clean the pokedex
 const cleanAll = () => {
 	imgDisplay.innerHTML = ``;
 	nameElement.textContent = ``;
@@ -70,13 +92,13 @@ const cleanAll = () => {
         light.classList.remove("animated");
     });
 };
-
-
+// Function for animate the lights
 const animateLights=()=>{
     lights.forEach(light=>{
         light.classList.add("animated");
     });
 }
+// Event listeners
 searchBtn.addEventListener("click", () => {
 	getPoke();
     animateLights();
