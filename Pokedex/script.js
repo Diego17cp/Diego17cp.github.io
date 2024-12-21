@@ -13,6 +13,7 @@ const spDefElement = document.getElementById("special-defense");
 const speedElement = document.getElementById("speed");
 const imgDisplay = document.getElementById("img-display");
 const form=document.getElementById("form");
+const lights=document.querySelectorAll(".light");
 
 // Function for get the pokemons
 
@@ -64,12 +65,16 @@ const cleanAll = () => {
 	spAtElement.textContent = ``;
 	spDefElement.textContent = ``;
 	speedElement.textContent = ``;
+    searchInput.value = ``;
+    lights.forEach(light=>{
+        light.classList.remove("animated");
+    });
 };
 
+
 const animateLights=()=>{
-    const lights=document.querySelectorAll(".light");
     lights.forEach(light=>{
-        light.classList.toggle("animated");
+        light.classList.add("animated");
     });
 }
 searchBtn.addEventListener("click", () => {

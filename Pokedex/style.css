@@ -392,6 +392,7 @@ form {
     }
     50% {
         background-color: #d44281;
+        box-shadow: 0 0 10px pink;
     }
     100% {
         background-color: #77063d;
@@ -403,6 +404,7 @@ form {
     }
     50% {
         background-color: rgb(250, 250, 191);
+        box-shadow: 0 0 10px rgb(250, 250, 191);
     }
     100% {
         background-color: yellow;
@@ -414,6 +416,7 @@ form {
     }
     50% {
         background-color: lightgreen;
+        box-shadow: 0 0 10px rgb(174, 233, 174);
     }
     100% {
         background-color: green;
