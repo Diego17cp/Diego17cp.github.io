@@ -1,0 +1,401 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(30, 30, 100);
+}
+header {
+  /* background-color:red; */
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+header h1 {
+    font-family: "Pokemon Solid", sans-serif;
+    color: yellow;
+    -webkit-text-stroke: 1px blue;
+    font-weight: bold;
+}
+main {
+    height: 100vh;
+    width: 100%;
+}
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    font-family: monospace;
+}
+/* Lil message for remember what have to do */
+.msg {
+    position: absolute;
+    background-color: yellow;
+    height: 80px;
+    width: 150px;
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    top: 150px;
+    left: 10%;
+    transform: rotate(-10deg);
+}
+/* General class for every pokedex displays  */
+.pokedex {
+    background-color: red;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+}
+/* Display larger that contains the img of the pokemon and the form */
+.large {
+    height: 500px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/* Design for the camera above of the large dex */
+.cam-container {
+    height: 70px;
+    width: 100%;
+    position: relative;
+}
+.cam-section {
+    height: 70px;
+    width: 60%;
+    position: absolute;
+    background-color: red;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-around;
+}
+.cam-section:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 2px;
+    height: 30%;
+    background-color: black;
+}
+.cam {
+    background-color: skyblue;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    border: 2px solid gray;
+    margin-top: 10px;
+}
+.lights-container {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.light {
+    height: 15px;
+    width: 15px;
+    margin-top: 10px;
+    border-radius: 50%;
+}
+.light:nth-child(1) {
+    background-color: rgb(110, 25, 78);
+}
+.light:nth-child(2) {
+    background-color: yellow;
+}
+.light:nth-child(3) {
+    background-color: yellowgreen;
+}
+/* Lil div for form the camera section */
+.cam-back {
+    background-color: inherit;
+    width: 100%;
+    height: 50px;
+    z-index: 1;
+    border-bottom: 2px solid black;
+}
+/* container of the img on the center */
+.img-container {
+    height: 250px;
+    width: 300px;
+    background-color: lightgray;
+    margin: 30px auto;
+    border-radius: 10px 10px 10px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* lil screen where it will display the sprite */
+.img-display {
+    background-color: black;
+    height: 200px;
+    width: 250px;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+#sprite {
+    height: 180px;
+    width: 180px;
+    z-index: 100;
+}
+/* bottom part of the large dex where is the form */
+.bottom-container {
+    height: 100px;
+    width: 100%;
+    background-color: inherit;
+    display: flex;
+    border-radius: 10px;
+}
+form {
+    display: flex;
+    background-color: inherit;
+    width: 70%;
+    height: 100%;
+    justify-content: center;
+    gap: 15px;
+    border-radius: 10px 0 0 10px;
+}
+#search-button {
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    border: none;
+}
+#search-button:hover {
+    background-color: rgb(58, 50, 50);
+}
+#search-button:active {
+    background-color: gray;
+    box-shadow: 0 0 10px black;
+}
+#search-input {
+    height: 40px;
+    margin-top: 30px;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    background-color: rgb(28, 189, 28);
+    color: black;
+    padding: 10px;
+    font-size: 0.9rem;
+    font-family: monospace;
+}
+/* cross display */
+.cross-container {
+    height: 100%;
+    width: 30%;
+    background-color: inherit;
+    border-radius: 0 0 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.cross-vert {
+    height: 70px;
+    width: 20px;
+    background-color: black;
+    position: absolute;
+}
+.cross-hor {
+    height: 20px;
+    width: 70px;
+    background-color: black;
+    position: absolute;
+}
+/* design for the little dex where display the info about the pkmn */
+.lil {
+    height: 450px;
+    width: 300px;
+    margin: 50px 0 0 10px;
+    padding: 20px;
+}
+.name-and-id {
+    height: 80px;
+    width: 100%;
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font: normal normal normal 1.5rem monospace;
+    gap: 60px;
+}
+.types {
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.type {
+  /* min-height:50px; */
+    min-width: 70px;
+    padding: 5px;
+    border-radius: 7px;
+    text-align: center;
+    font: normal normal normal 1rem monospace;
+    text-transform: uppercase;
+    color: white;
+}
+.size {
+    width: 100%;
+    background-color: black;
+    height: 50px;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    padding: 5px;
+    gap: 10px;
+}
+.stats {
+    height: 200px;
+    width: 100%;
+    background-color: black;
+    margin-top: 20px;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+}
+.stats-container {
+    height: 150px;
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+/* centar part of the dex that joins both parts */
+.center {
+    height: 200px;
+    width: 80px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    z-index: -1;
+}
+/* types of pkmns  */
+.normal {
+    background-color: #b7b7aa;
+}
+
+.fire {
+    background-color: #ff6f52;
+}
+
+.water {
+    background-color: #42a1ff;
+}
+
+.electric {
+    background-color: #fecc33;
+}
+
+.grass {
+    background-color: #78cc55;
+}
+
+.ice {
+    background-color: #66ccfe;
+}
+
+.fighting {
+    background-color: #d3887e;
+}
+
+.poison {
+    background-color: #971f79;
+}
+
+.ground {
+    background-color: #dfba52;
+}
+
+.flying {
+    background-color: #8899ff;
+}
+
+.psychic {
+    background-color: #ff66a3;
+}
+
+.bug {
+    background-color: #aabb23;
+}
+
+.rock {
+    background-color: #baaa66;
+}
+
+.ghost {
+    background-color: #9995d0;
+}
+
+.dragon {
+    background-color: #9e93f1;
+}
+
+.dark {
+    background-color: #b59682;
+}
+
+.steel {
+    background-color: #abaabb;
+}
+
+.fairy {
+    background-color: #ed99ed;
+}
+
+@media only screen and (max-width: 730px) {
+    .msg {
+        left: 0;
+    }
+    .large {
+        margin-top: 30px;
+    }
+    .lil {
+        margin: 15px 10px;
+    }
+    .center {
+        z-index: -1;
+        background-color: blue;
+        height: 80px;
+        width: 200px;
+        top: 0;
+        display: none;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .msg {
+        top: 20%;
+        right: 0;
+    }
+}
