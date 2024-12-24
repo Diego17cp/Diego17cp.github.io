@@ -434,15 +434,17 @@ form {
         margin: 15px 10px;
     }
     .center {
+        position:fixed ;
         z-index: -1;
-        background-color: blue;
+        background-color: red;
         height: 80px;
         width: 200px;
-        top: 0;
-        display: none;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 500px) and (max-height: 926px) {
     header h1 {
         font-size: 1.5rem;
     }
