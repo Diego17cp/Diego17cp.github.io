@@ -201,6 +201,7 @@ form {
     transition: all 0.3s ease;
     outline: none;
     border: none;
+    margin-bottom: 30px;
 }
 #search-button:hover {
     background-color: rgb(58, 50, 50);
@@ -211,7 +212,6 @@ form {
 }
 #search-input {
     height: 40px;
-    margin-top: 30px;
     border-radius: 10px;
     outline: none;
     border: none;
