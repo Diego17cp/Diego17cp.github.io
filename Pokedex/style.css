@@ -486,6 +486,7 @@ form {
     #search-button {
         width: 40px;
         height: 40px;
+        margin-bottom: 5px;
     }
     #search-input{
         height: 30px;
