@@ -19,10 +19,35 @@ const lights=document.querySelectorAll(".light");
 // array to collect all the pokemons
 let allPokemons=[];
 
+// Function to animate the lights
+const animateLights=()=>{
+	lights.forEach(light=>{
+		light.classList.add("animated");
+	});
+}
+// Function to clean the pokedex
+const cleanAll = () => {
+	imgDisplay.innerHTML = ``;
+	nameElement.textContent = ``;
+	idElement.textContent = ``;
+	typesContainer.innerHTML = ``;
+	weightElement.textContent = ``;
+	heightElement.textContent = ``;
+	hpElement.textContent = ``;
+	attackElement.textContent = ``;
+	defenseElement.textContent = ``;
+	spAtElement.textContent = ``;
+	spDefElement.textContent = ``;
+	speedElement.textContent = ``;
+	searchInput.value = ``;
+	lights.forEach(light=>{
+		light.classList.remove("animated");
+	});
+};
 // Function to fetch all the pokemons from the API
 const fetchAllPokemons = async () => {
-    try {
-        const response = await fetch("https://pokeapi-proxy.freecodecamp.rocks/api/pokemon");
+	try {
+		const response = await fetch("https://pokeapi-proxy.freecodecamp.rocks/api/pokemon");
         const data = await response.json();
         allPokemons = data.results.map(pkmn => {
             // Extract ID from URL or use default method
@@ -148,31 +173,6 @@ const getPoke = async (pkmnNameOrId) => {
 		return;
 	}
 };
-// Function to animate the lights
-const animateLights=()=>{
-	lights.forEach(light=>{
-		light.classList.add("animated");
-	});
-}
-// Function to clean the pokedex
-const cleanAll = () => {
-	imgDisplay.innerHTML = ``;
-	nameElement.textContent = ``;
-	idElement.textContent = ``;
-	typesContainer.innerHTML = ``;
-	weightElement.textContent = ``;
-	heightElement.textContent = ``;
-	hpElement.textContent = ``;
-	attackElement.textContent = ``;
-	defenseElement.textContent = ``;
-	spAtElement.textContent = ``;
-	spDefElement.textContent = ``;
-	speedElement.textContent = ``;
-	searchInput.value = ``;
-	lights.forEach(light=>{
-		light.classList.remove("animated");
-	});
-};
 // Event listeners
 form.addEventListener("submit", async (e) => {
 	e.preventDefault();
@@ -189,3 +189,4 @@ searchBtn.addEventListener("click", async () => {
 });
 // Fetch all the pokemons
 fetchAllPokemons();
+
