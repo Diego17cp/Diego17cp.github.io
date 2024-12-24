@@ -191,6 +191,7 @@ form {
     align-items: center;
     gap: 15px;
     border-radius: 10px 0 0 10px;
+    position: relative;
 }
 #search-button {
     width: 40px;
@@ -220,6 +221,46 @@ form {
     padding: 10px;
     font-size: 0.9rem;
     font-family: monospace;
+}
+/* Suggestions of pokemons introduced on the input */
+#pkmn-suggestions {
+    position: absolute;
+    top: 80%;
+    left: 10%;;
+    background-color:#328197;
+    border-radius:10px;
+    width: 100%;
+    z-index: 1;
+    box-shadow: 0 0 10px gray;
+}
+/* If the suggestions container isn't empty generate a before */
+#pkmn-suggestions:not(:empty):before{
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    height: 20px;
+    width: 20px;
+    background-color: #328197;
+    box-shadow: 0 0 10px gray;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+.suggestion {
+    padding: 10px;
+    cursor: pointer;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: all 0.3s ease-out;
+    font-size: 1.1rem;
+}
+
+.suggestion:hover {
+    background-color: #f0f0f0;
+}
+.mini-sprite {
+    height: 50px;
 }
 /* cross display */
 .cross-container {
@@ -445,6 +486,10 @@ form {
     }
     .lil {
         margin: 15px 10px;
+    }
+    .name-and-id {
+        font-size: 1.2rem;
+        gap: 30px;
     }
     .center {
         position:fixed ;
