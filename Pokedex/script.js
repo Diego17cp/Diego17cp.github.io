@@ -68,7 +68,8 @@ const getPoke = async () => {
 	} catch (err) {
         // If the pokemon is not found, clean the pokedex and show an alert
 		cleanAll();
-		alert(`Pokemon not found`);
+		imgDisplay.innerHTML = `<img src="./imgs/error.gif" alt="Pokemon not found" id="error-img">
+				<p id="error-message">Pokemon not found</p>`;
 		console.log(err);
 		return;
 	}
