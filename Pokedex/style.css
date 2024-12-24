@@ -157,12 +157,22 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 5px;
     color: white;
 }
 #sprite {
     height: 180px;
     width: 180px;
     z-index: 100;
+}
+#error-img{
+    height: 150px;
+}
+#error-msg{
+    color: red;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 /* bottom part of the large dex where is the form */
 .bottom-container {
@@ -429,6 +439,9 @@ form {
     }
     .large {
         margin-top: 30px;
+    }
+    #error-msg {
+        font-size: 1rem;
     }
     .lil {
         margin: 15px 10px;
