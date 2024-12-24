@@ -75,6 +75,7 @@ searchInput.addEventListener("input", (e) => {
 				searchInput.value=suggestion.dataset.name;
 				selectContainer.remove();
 				getPoke(suggestion.dataset.name);
+				animateLights();
 			})
 		})
 	}
