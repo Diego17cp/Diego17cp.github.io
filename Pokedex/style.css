@@ -232,6 +232,20 @@ form {
     width: 100%;
     z-index: 1;
     box-shadow: 0 0 10px gray;
+    max-height: 200px;
+    overflow-y: auto;
+}
+/* Style the scrollbar of suggestions */
+#pkmn-suggestions::-webkit-scrollbar {
+    width: 10px;
+}
+#pkmn-suggestions::-webkit-scrollbar-track {
+    background-color: #1e4d5c;
+    border-radius: 10px;
+}
+#pkmn-suggestions::-webkit-scrollbar-thumb {
+    background-color: #0f262e;
+    border-radius: 10px;
 }
 /* If the suggestions container isn't empty generate a before */
 #pkmn-suggestions:not(:empty):before{

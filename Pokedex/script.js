@@ -68,7 +68,7 @@ const filterPokemons=(search)=>{
 	return allPokemons.filter((pkmn) => 
 		pkmn.name.includes(search.toLowerCase()) ||
 		pkmn.id.toString().includes(search)
-	).slice(0, 5);
+	).slice(0, 10);
 }
 // Function to create the div element for the suggestions
 const createSelect=()=>{
