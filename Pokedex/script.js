@@ -13,18 +13,18 @@ const spAtElement = document.getElementById("special-attack");
 const spDefElement = document.getElementById("special-defense");
 const speedElement = document.getElementById("speed");
 const imgDisplay = document.getElementById("img-display");
-const form=document.getElementById("form");
-const lights=document.querySelectorAll(".light");
+const form = document.getElementById("form");
+const lights = document.querySelectorAll(".light");
 
 // array to collect all the pokemons
-let allPokemons=[];
+let allPokemons = [];
 
 // Function to animate the lights
-const animateLights=()=>{
-	lights.forEach(light=>{
+const animateLights = () => {
+	lights.forEach((light) => {
 		light.classList.add("animated");
 	});
-}
+};
 // Function to clean the pokedex
 const cleanAll = () => {
 	imgDisplay.innerHTML = ``;
@@ -40,82 +40,91 @@ const cleanAll = () => {
 	spDefElement.textContent = ``;
 	speedElement.textContent = ``;
 	searchInput.value = ``;
-	lights.forEach(light=>{
+	lights.forEach((light) => {
 		light.classList.remove("animated");
 	});
 };
 // Function to fetch all the pokemons from the API
 const fetchAllPokemons = async () => {
 	try {
-		const response = await fetch("https://pokeapi-proxy.freecodecamp.rocks/api/pokemon");
-        const data = await response.json();
-        allPokemons = data.results.map(pkmn => {
-            // Extract ID from URL or use default method
-            const urlParts = pkmn.url.split('/');
-            const id = urlParts[urlParts.length - 2];
-            return {
-                name: pkmn.name,
-                id: parseInt(id),
-                sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
-            };
-        });
-    } catch(err) {
-        console.log(err);
-    }
+		const response = await fetch(
+			"https://pokeapi-proxy.freecodecamp.rocks/api/pokemon"
+		);
+		const data = await response.json();
+		allPokemons = data.results.map((pkmn) => {
+			// Extract ID from URL or use default method
+			const urlParts = pkmn.url.split("/");
+			const id = urlParts[urlParts.length - 2];
+			return {
+				name: pkmn.name,
+				id: parseInt(id),
+				sprite: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
+			};
+		});
+	} catch (err) {
+		console.log(err);
+	}
 };
 // Function to filter the pokemons by the search input
-const filterPokemons=(search)=>{
-	return allPokemons.filter((pkmn) => 
-		pkmn.name.includes(search.toLowerCase()) ||
-		pkmn.id.toString().includes(search)
-	).slice(0, 10);
-}
+const filterPokemons = (search) => {
+	return allPokemons
+		.filter(
+			(pkmn) =>
+				pkmn.name.includes(search.toLowerCase()) ||
+				pkmn.id.toString().includes(search)
+		)
+		.slice(0, 10);
+};
 // Function to create the div element for the suggestions
-const createSelect=()=>{
-	const existing=document.getElementById("pkmn-suggestions");
-	if(existing) existing.remove();
+const createSelect = () => {
+	const existing = document.getElementById("pkmn-suggestions");
+	if (existing) existing.remove();
 
-	const selectContainer=document.createElement("div");
-	selectContainer.id="pkmn-suggestions";
+	const selectContainer = document.createElement("div");
+	selectContainer.id = "pkmn-suggestions";
 	form.appendChild(selectContainer);
 
 	return selectContainer;
-}
+};
 searchInput.addEventListener("input", (e) => {
 	// Obtain the value of the input
-	const search=e.target.value.trim();
+	const search = e.target.value.trim();
 	// Create the div element for the suggestions
-	const selectContainer=createSelect();
+	const selectContainer = createSelect();
 
 	// Filter the pokemons by the search input
-	if(search.length > 0){
-		const matches=filterPokemons(search);
+	if (search.length > 0) {
+		const matches = filterPokemons(search);
 		// Create the suggestions
-		selectContainer.innerHTML=matches.map(
-			pkmn => `<div class="suggestion" data-name="${pkmn.name}" data-id="${pkmn.id}">${pkmn.name} (#${pkmn.id}) <img class="mini-sprite" src="${pkmn.sprite}" alt="${pkmn.name} mini sprite"></div>`
-		).join("");
+		selectContainer.innerHTML = matches
+			.map(
+				(pkmn) =>
+					`<div class="suggestion" data-name="${pkmn.name}" data-id="${pkmn.id}">${pkmn.name} (#${pkmn.id}) <img class="mini-sprite" src="${pkmn.sprite}" alt="${pkmn.name} mini sprite"></div>`
+			)
+			.join("");
 		// Add event listener to the suggestions
-		selectContainer.querySelectorAll(".suggestion").forEach((suggestion) => {
-			suggestion.addEventListener("click", () => {
-				searchInput.value=suggestion.dataset.name;
-				selectContainer.remove();
-				getPoke(suggestion.dataset.name);
-				animateLights();
-			})
-		})
-	}
-	else{
+		selectContainer
+			.querySelectorAll(".suggestion")
+			.forEach((suggestion) => {
+				suggestion.addEventListener("click", () => {
+					searchInput.value = suggestion.dataset.name;
+					selectContainer.remove();
+					getPoke(suggestion.dataset.name);
+					animateLights();
+				});
+			});
+	} else {
 		selectContainer.remove();
 	}
-})
+});
 // Function to search the pokemon
-const search=async()=>{
-	const search=searchInput.value.toLowerCase().trim();
-	if(search){
+const search = async () => {
+	const search = searchInput.value.toLowerCase().trim();
+	if (search) {
 		await getPoke(search);
-		searchInput.value="";
+		searchInput.value = "";
 	}
-}
+};
 // Function for get the pokemon selected
 
 const getPoke = async (pkmnNameOrId) => {
@@ -125,26 +134,24 @@ const getPoke = async (pkmnNameOrId) => {
 		);
 		const data = await response.json();
 		// Obtain the sprites from the API
-		const frontSprite=data.sprites.front_default;
-		const backSprite=data.sprites.back_default;
+		const frontSprite = data.sprites.front_default;
+		const backSprite = data.sprites.back_default;
 		// Display the sprites
 		imgDisplay.innerHTML = `<img id="sprite" src="${frontSprite}" alt="${data.name} front default sprite">`;
 		// Obtain the new sprite element
-		const sprite=document.getElementById("sprite");
+		const sprite = document.getElementById("sprite");
 		// Set the sprite to change every 3 seconds
-		let isFront=true;
-		setInterval(
-			()=>{
-				if(isFront){
-					sprite.src=backSprite;
-					sprite.alt=`${data.name} back default sprite`;
-				} else{
-					sprite.src=frontSprite;
-					sprite.alt=`${data.name} front default sprite`;
-				}
-				isFront=!isFront;
-			},3000
-		)
+		let isFront = true;
+		setInterval(() => {
+			if (isFront) {
+				sprite.src = backSprite;
+				sprite.alt = `${data.name} back default sprite`;
+			} else {
+				sprite.src = frontSprite;
+				sprite.alt = `${data.name} front default sprite`;
+			}
+			isFront = !isFront;
+		}, 3000);
 		// Display the data of the pokemon on the little pokedex
 		nameElement.textContent = `${data.name.toUpperCase()}`;
 		idElement.textContent = `#${data.id < 100 ? `0${data.id}` : data.id}`;
@@ -154,8 +161,8 @@ const getPoke = async (pkmnNameOrId) => {
 					`<div class="type ${pkmn.type.name}">${pkmn.type.name}</div>`
 			)
 			.join("");
-		const weightInKg = data.weight / 10
-		const heightInM = data.height / 10
+		const weightInKg = data.weight / 10;
+		const heightInM = data.height / 10;
 		weightElement.textContent = `Weight: ${weightInKg}kg`;
 		heightElement.textContent = `Height: ${heightInM}m`;
 		hpElement.textContent = `HP: ${data.stats[0].base_stat}`;
@@ -176,17 +183,16 @@ const getPoke = async (pkmnNameOrId) => {
 // Event listeners
 form.addEventListener("submit", async (e) => {
 	e.preventDefault();
-	const suggestions=document.getElementById("pkmn-suggestions");
-	if(suggestions)suggestions.remove();
+	const suggestions = document.getElementById("pkmn-suggestions");
+	if (suggestions) suggestions.remove();
 	await search();
 	animateLights();
-})
+});
 searchBtn.addEventListener("click", async () => {
-	const suggestions=document.getElementById("pkmn-suggestions");
-	if(suggestions)suggestions.remove();
+	const suggestions = document.getElementById("pkmn-suggestions");
+	if (suggestions) suggestions.remove();
 	await search();
-    animateLights();
+	animateLights();
 });
 // Fetch all the pokemons
 fetchAllPokemons();
-

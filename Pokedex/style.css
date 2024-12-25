@@ -1,556 +1,556 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 body {
-    height: 100vh;
-    width: 100%;
-    background-color: rgb(30, 30, 100);
+	height: 100vh;
+	width: 100%;
+	background-color: rgb(30, 30, 100);
 }
 header {
-  /* background-color:red; */
-    width: 100%;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
+	/* background-color:red; */
+	width: 100%;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px;
 }
 header h1 {
-    font-family: "Pokemon Solid", sans-serif;
-    color: yellow;
-    -webkit-text-stroke: 1px blue;
-    font-weight: bold;
-    font-size: 2rem;
+	font-family: "Pokemon Solid", sans-serif;
+	color: yellow;
+	-webkit-text-stroke: 1px blue;
+	font-weight: bold;
+	font-size: 2rem;
 }
 main {
-    height: 100vh;
-    width: 100%;
+	height: 100vh;
+	width: 100%;
 }
 .container {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    position: relative;
-    font-family: monospace;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	position: relative;
+	font-family: monospace;
 }
 /* Lil message for remember what have to do */
 .msg {
-    position: absolute;
-    background-color: yellow;
-    height: 80px;
-    width: 150px;
-    text-align: center;
-    padding: 15px;
-    font-weight: bold;
-    border-radius: 10px;
-    top: 150px;
-    left: 10%;
-    transform: rotate(-10deg);
+	position: absolute;
+	background-color: yellow;
+	height: 80px;
+	width: 150px;
+	text-align: center;
+	padding: 15px;
+	font-weight: bold;
+	border-radius: 10px;
+	top: 150px;
+	left: 10%;
+	transform: rotate(-10deg);
 }
 /* General class for every pokedex displays  */
 .pokedex {
-    background-color: red;
-    border-radius: 10px;
-    box-shadow: 0 0 10px gray;
+	background-color: red;
+	border-radius: 10px;
+	box-shadow: 0 0 10px gray;
 }
 /* Display larger that contains the img of the pokemon and the form */
 .large {
-    height: 500px;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+	height: 500px;
+	width: 400px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 /* Design for the camera above of the large dex */
 .cam-container {
-    height: 70px;
-    width: 100%;
-    position: relative;
+	height: 70px;
+	width: 100%;
+	position: relative;
 }
 .cam-section {
-    height: 70px;
-    width: 60%;
-    position: absolute;
-    background-color: red;
-    border-bottom: 2px solid black;
-    display: flex;
-    justify-content: space-around;
+	height: 70px;
+	width: 60%;
+	position: absolute;
+	background-color: red;
+	border-bottom: 2px solid black;
+	display: flex;
+	justify-content: space-around;
 }
 .cam-section:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 2px;
-    height: 30%;
-    background-color: black;
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 2px;
+	height: 30%;
+	background-color: black;
 }
 .cam {
-    background-color: skyblue;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    border: 3px solid rgb(87, 78, 78);
-    margin-top: 10px;
+	background-color: skyblue;
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+	border: 3px solid rgb(87, 78, 78);
+	margin-top: 10px;
 }
 .lights-container {
-    height: 100%;
-    width: 50%;
-    display: flex;
-    justify-content: space-evenly;
+	height: 100%;
+	width: 50%;
+	display: flex;
+	justify-content: space-evenly;
 }
 .light {
-    height: 15px;
-    width: 15px;
-    margin-top: 10px;
-    border-radius: 50%;
-    border:3px solid rgb(102, 92, 92);
+	height: 15px;
+	width: 15px;
+	margin-top: 10px;
+	border-radius: 50%;
+	border: 3px solid rgb(102, 92, 92);
 }
 .light:nth-child(1) {
-    background-color: #77063d;
+	background-color: #77063d;
 }
 .light:nth-child(2) {
-    background-color: yellow;
+	background-color: yellow;
 }
 .light:nth-child(3) {
-    background-color: green;
+	background-color: green;
 }
 .light:nth-child(1).animated {
-    animation: blink-red 900ms infinite;
+	animation: blink-red 900ms infinite;
 }
 .light:nth-child(2).animated {
-    animation: blink-yellow 1s infinite;
+	animation: blink-yellow 1s infinite;
 }
 .light:nth-child(3).animated {
-    animation: blink-green 1s infinite;
+	animation: blink-green 1s infinite;
 }
 /* Lil div for form the camera section */
 .cam-back {
-    background-color: inherit;
-    width: 100%;
-    height: 50px;
-    z-index: 1;
-    border-bottom: 2px solid black;
+	background-color: inherit;
+	width: 100%;
+	height: 50px;
+	z-index: 1;
+	border-bottom: 2px solid black;
 }
 /* container of the img on the center */
 .img-container {
-    height: 250px;
-    width: 300px;
-    background-color: lightgray;
-    margin: 30px auto;
-    border-radius: 10px 10px 10px 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	height: 250px;
+	width: 300px;
+	background-color: lightgray;
+	margin: 30px auto;
+	border-radius: 10px 10px 10px 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 /* lil screen where it will display the sprite */
 .img-display {
-    background-color: black;
-    height: 200px;
-    width: 250px;
-    padding: 10px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 5px;
-    color: white;
+	background-color: black;
+	height: 200px;
+	width: 250px;
+	padding: 10px;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 5px;
+	color: white;
 }
 #sprite {
-    height: 180px;
-    width: 180px;
-    z-index: 100;
+	height: 180px;
+	width: 180px;
+	z-index: 100;
 }
-#error-img{
-    height: 150px;
+#error-img {
+	height: 150px;
 }
-#error-msg{
-    color: red;
-    font-size: 1.2rem;
-    font-weight: bold;
+#error-msg {
+	color: red;
+	font-size: 1.2rem;
+	font-weight: bold;
 }
 /* bottom part of the large dex where is the form */
 .bottom-container {
-    height: 100px;
-    width: 100%;
-    background-color: inherit;
-    display: flex;
-    border-radius: 10px;
+	height: 100px;
+	width: 100%;
+	background-color: inherit;
+	display: flex;
+	border-radius: 10px;
 }
 form {
-    display: flex;
-    background-color: inherit;
-    width: 70%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    border-radius: 10px 0 0 10px;
-    position: relative;
+	display: flex;
+	background-color: inherit;
+	width: 70%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+	border-radius: 10px 0 0 10px;
+	position: relative;
 }
 #search-button {
-    width: 40px;
-    height: 40px;
-    background-color: black;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    outline: none;
-    border: none;
-    margin-bottom: 30px;
+	width: 40px;
+	height: 40px;
+	background-color: black;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	outline: none;
+	border: none;
+	margin-bottom: 30px;
 }
 #search-button:hover {
-    background-color: rgb(58, 50, 50);
+	background-color: rgb(58, 50, 50);
 }
 #search-button:active {
-    background-color: gray;
-    box-shadow: 0 0 10px black;
+	background-color: gray;
+	box-shadow: 0 0 10px black;
 }
 #search-input {
-    height: 40px;
-    border-radius: 10px;
-    outline: none;
-    border: none;
-    background-color: rgb(28, 189, 28);
-    color: black;
-    padding: 10px;
-    font-size: 0.9rem;
-    font-family: monospace;
+	height: 40px;
+	border-radius: 10px;
+	outline: none;
+	border: none;
+	background-color: rgb(28, 189, 28);
+	color: black;
+	padding: 10px;
+	font-size: 0.9rem;
+	font-family: monospace;
 }
 /* Suggestions of pokemons introduced on the input */
 #pkmn-suggestions {
-    position: absolute;
-    top: 80%;
-    left: 10%;;
-    background-color:#328197;
-    border-radius:10px;
-    width: 100%;
-    z-index: 1;
-    box-shadow: 0 0 10px gray;
-    max-height: 200px;
-    overflow-y: auto;
+	position: absolute;
+	top: 80%;
+	left: 10%;
+	background-color: #328197;
+	border-radius: 10px;
+	width: 100%;
+	z-index: 1;
+	box-shadow: 0 0 10px gray;
+	max-height: 200px;
+	overflow-y: auto;
 }
 /* Style the scrollbar of suggestions */
 #pkmn-suggestions::-webkit-scrollbar {
-    width: 10px;
+	width: 10px;
 }
 #pkmn-suggestions::-webkit-scrollbar-track {
-    background-color: #1e4d5c;
-    border-radius: 10px;
+	background-color: #1e4d5c;
+	border-radius: 10px;
 }
 #pkmn-suggestions::-webkit-scrollbar-thumb {
-    background-color: #0f262e;
-    border-radius: 10px;
+	background-color: #0f262e;
+	border-radius: 10px;
 }
 /* If the suggestions container isn't empty generate a before */
-#pkmn-suggestions:not(:empty):before{
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    height: 20px;
-    width: 20px;
-    background-color: #328197;
-    box-shadow: 0 0 10px gray;
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+#pkmn-suggestions:not(:empty):before {
+	content: "";
+	position: absolute;
+	top: -20px;
+	left: 50%;
+	height: 20px;
+	width: 20px;
+	background-color: #328197;
+	box-shadow: 0 0 10px gray;
+	clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 .suggestion {
-    padding: 10px;
-    cursor: pointer;
-    text-transform: capitalize;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    transition: all 0.3s ease-out;
-    font-size: 1.1rem;
+	padding: 10px;
+	cursor: pointer;
+	text-transform: capitalize;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	transition: all 0.3s ease-out;
+	font-size: 1.1rem;
 }
 
 .suggestion:hover {
-    background-color: #f0f0f0;
+	background-color: #f0f0f0;
 }
 .mini-sprite {
-    height: 50px;
+	height: 50px;
 }
 /* cross display */
 .cross-container {
-    height: 100%;
-    width: 30%;
-    background-color: inherit;
-    border-radius: 0 0 10px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+	height: 100%;
+	width: 30%;
+	background-color: inherit;
+	border-radius: 0 0 10px 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
 }
 .cross-vert {
-    height: 70px;
-    width: 20px;
-    background-color: black;
-    position: absolute;
+	height: 70px;
+	width: 20px;
+	background-color: black;
+	position: absolute;
 }
 .cross-hor {
-    height: 20px;
-    width: 70px;
-    background-color: black;
-    position: absolute;
+	height: 20px;
+	width: 70px;
+	background-color: black;
+	position: absolute;
 }
 /* design for the little dex where display the info about the pkmn */
 .lil {
-    height: 450px;
-    width: 300px;
-    margin: 50px 0 0 10px;
-    padding: 20px;
+	height: 450px;
+	width: 300px;
+	margin: 50px 0 0 10px;
+	padding: 20px;
 }
 .name-and-id {
-    height: 80px;
-    width: 100%;
-    background-color: black;
-    border-radius: 10px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    font: normal normal normal 1.5rem monospace;
-    gap: 60px;
+	height: 80px;
+	width: 100%;
+	background-color: black;
+	border-radius: 10px;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	font: normal normal normal 1.5rem monospace;
+	gap: 60px;
 }
 .types {
-    width: 100%;
-    min-height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+	width: 100%;
+	min-height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
 }
 .type {
-  /* min-height:50px; */
-    min-width: 70px;
-    padding: 5px;
-    border-radius: 7px;
-    text-align: center;
-    font: normal normal normal 1rem monospace;
-    text-transform: uppercase;
-    color: white;
+	/* min-height:50px; */
+	min-width: 70px;
+	padding: 5px;
+	border-radius: 7px;
+	text-align: center;
+	font: normal normal normal 1rem monospace;
+	text-transform: uppercase;
+	color: white;
 }
 .size {
-    width: 100%;
-    background-color: black;
-    height: 50px;
-    border-radius: 10px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: .8rem;
-    padding: 5px;
-    gap: 10px;
+	width: 100%;
+	background-color: black;
+	height: 50px;
+	border-radius: 10px;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.8rem;
+	padding: 5px;
+	gap: 10px;
 }
 .stats {
-    height: 200px;
-    width: 100%;
-    background-color: black;
-    margin-top: 20px;
-    border-radius: 10px;
-    color: white;
-    padding: 10px;
+	height: 200px;
+	width: 100%;
+	background-color: black;
+	margin-top: 20px;
+	border-radius: 10px;
+	color: white;
+	padding: 10px;
 }
 .stats-container {
-    height: 150px;
-    margin-top: 10px;
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+	height: 150px;
+	margin-top: 10px;
+	width: 100%;
+	padding: 10px;
+	font-size: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
 }
 /* centar part of the dex that joins both parts */
 .center {
-    height: 200px;
-    width: 80px;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    z-index: -1;
+	height: 200px;
+	width: 80px;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	z-index: -1;
 }
 /* types of pkmns  */
 .normal {
-    background-color: #b7b7aa;
+	background-color: #b7b7aa;
 }
 
 .fire {
-    background-color: #ff6f52;
+	background-color: #ff6f52;
 }
 
 .water {
-    background-color: #42a1ff;
+	background-color: #42a1ff;
 }
 
 .electric {
-    background-color: #fecc33;
+	background-color: #fecc33;
 }
 
 .grass {
-    background-color: #78cc55;
+	background-color: #78cc55;
 }
 
 .ice {
-    background-color: #66ccfe;
+	background-color: #66ccfe;
 }
 
 .fighting {
-    background-color: #d3887e;
+	background-color: #d3887e;
 }
 
 .poison {
-    background-color: #971f79;
+	background-color: #971f79;
 }
 
 .ground {
-    background-color: #dfba52;
+	background-color: #dfba52;
 }
 
 .flying {
-    background-color: #8899ff;
+	background-color: #8899ff;
 }
 
 .psychic {
-    background-color: #ff66a3;
+	background-color: #ff66a3;
 }
 
 .bug {
-    background-color: #aabb23;
+	background-color: #aabb23;
 }
 
 .rock {
-    background-color: #baaa66;
+	background-color: #baaa66;
 }
 
 .ghost {
-    background-color: #9995d0;
+	background-color: #9995d0;
 }
 
 .dragon {
-    background-color: #9e93f1;
+	background-color: #9e93f1;
 }
 
 .dark {
-    background-color: #b59682;
+	background-color: #b59682;
 }
 
 .steel {
-    background-color: #abaabb;
+	background-color: #abaabb;
 }
 
 .fairy {
-    background-color: #ed99ed;
+	background-color: #ed99ed;
 }
 /* Animation for lights above */
 @keyframes blink-red {
-    0% {
-        background-color: #77063d;
-    }
-    50% {
-        background-color: #d44281;
-        box-shadow: 0 0 10px pink;
-    }
-    100% {
-        background-color: #77063d;
-    }
+	0% {
+		background-color: #77063d;
+	}
+	50% {
+		background-color: #d44281;
+		box-shadow: 0 0 10px pink;
+	}
+	100% {
+		background-color: #77063d;
+	}
 }
 @keyframes blink-yellow {
-    0% {
-        background-color: yellow;
-    }
-    50% {
-        background-color: rgb(250, 250, 191);
-        box-shadow: 0 0 10px rgb(250, 250, 191);
-    }
-    100% {
-        background-color: yellow;
-    }
+	0% {
+		background-color: yellow;
+	}
+	50% {
+		background-color: rgb(250, 250, 191);
+		box-shadow: 0 0 10px rgb(250, 250, 191);
+	}
+	100% {
+		background-color: yellow;
+	}
 }
 @keyframes blink-green {
-    0% {
-        background-color: green;
-    }
-    50% {
-        background-color: lightgreen;
-        box-shadow: 0 0 10px rgb(174, 233, 174);
-    }
-    100% {
-        background-color: green;
-    }
+	0% {
+		background-color: green;
+	}
+	50% {
+		background-color: lightgreen;
+		box-shadow: 0 0 10px rgb(174, 233, 174);
+	}
+	100% {
+		background-color: green;
+	}
 }
 
 @media only screen and (max-width: 730px) {
-    .msg {
-        left: 0;
-    }
-    .large {
-        margin-top: 30px;
-    }
-    #error-msg {
-        font-size: 1rem;
-    }
-    .lil {
-        margin: 15px 10px;
-    }
-    .name-and-id {
-        font-size: 1.2rem;
-        gap: 30px;
-    }
-    .center {
-        position:fixed ;
-        z-index: -1;
-        background-color: red;
-        height: 300px;
-        width: 200px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+	.msg {
+		left: 0;
+	}
+	.large {
+		margin-top: 30px;
+	}
+	#error-msg {
+		font-size: 1rem;
+	}
+	.lil {
+		margin: 15px 10px;
+	}
+	.name-and-id {
+		font-size: 1.2rem;
+		gap: 30px;
+	}
+	.center {
+		position: fixed;
+		z-index: -1;
+		background-color: red;
+		height: 300px;
+		width: 200px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 }
 @media only screen and (max-width: 500px) and (max-height: 926px) {
-    header h1 {
-        font-size: 1.5rem;
-    }
-    .msg {
-        top: 20%;
-        right: 0;
-    }
-    .large{
-        width: 300px;
-        margin-top: 50px;
-    }
-    .img-container{
-        width: 250px;
-    }
-    .img-display{
-        width: 200px;
-    }
-    .bottom-container{
-        height: 120px;
-    }
-    form {
-        gap: 1px;
-        flex-wrap: wrap;
-        padding: 5px;
-    }
-    #search-button {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 5px;
-    }
-    #search-input{
-        height: 30px;
-        font-size: 0.8rem;
-        margin-top: 10px;
-        margin-bottom: 30px;
-    }
+	header h1 {
+		font-size: 1.5rem;
+	}
+	.msg {
+		top: 20%;
+		right: 0;
+	}
+	.large {
+		width: 300px;
+		margin-top: 50px;
+	}
+	.img-container {
+		width: 250px;
+	}
+	.img-display {
+		width: 200px;
+	}
+	.bottom-container {
+		height: 120px;
+	}
+	form {
+		gap: 1px;
+		flex-wrap: wrap;
+		padding: 5px;
+	}
+	#search-button {
+		width: 40px;
+		height: 40px;
+		margin-bottom: 5px;
+	}
+	#search-input {
+		height: 30px;
+		font-size: 0.8rem;
+		margin-top: 10px;
+		margin-bottom: 30px;
+	}
 }
