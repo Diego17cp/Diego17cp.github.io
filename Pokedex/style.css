@@ -248,10 +248,10 @@ form {
 	border-radius: 10px;
 }
 /* If the suggestions container isn't empty generate a before */
-#pkmn-suggestions:not(:empty):before {
+#form:has(#pkmn-suggestions:not(:empty))::after {
 	content: "";
 	position: absolute;
-	top: -20px;
+	top: 65%;
 	left: 50%;
 	height: 20px;
 	width: 20px;
