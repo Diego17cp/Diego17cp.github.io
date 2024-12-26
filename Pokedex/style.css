@@ -595,6 +595,8 @@ form {
 @media only screen and (max-width: 730px) {
 	.msg {
 		left: 0;
+		font-size: .7rem;
+		width: 100px;
 	}
 	.large {
 		margin-top: 30px;
