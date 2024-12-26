@@ -1,3 +1,60 @@
+:root{
+	--main-bg:#1e1e64;
+	--header-font:"Pokemon Solid", sans-serif;
+	--header-color:yellow;
+	--header-border:1px blue;
+	--principal-font:monospace;
+	--dex-bg:red;
+	--cam-bg:skyblue;
+	--border-cam:3px solid #574e4e;
+	--lights-border: 3px solid #665c5c;
+	--light-one-bg: #77063d;
+	--light-two-bg: yellow;
+	--light-three-bg: green;
+	--sprite-container-bg: lightgray;
+	--display-bg: black;
+	--font-color: white;
+	--font-error-color:red;
+	--shadows:gray;
+	--bg-btns: #3b3838;
+	--input-bg: #1cbd1c;
+	--suggestion-bg: #328197;
+	--suggestion-scroll-bg: #1e4d5c;
+	--suggestions-scroll: #0f262e;
+	--hover-suggestion: #7ee3ee;
+	--progress-bg: #444444;
+	--hp-bar-bg: linear-gradient(90deg, #4caf50, #81c784);
+	--atk-bar-bg: linear-gradient(90deg, #b72121, #ea336a);
+	--def-bar-bg: linear-gradient(90deg, #d2460e, #dd9519);
+	--atkesp-bar-bg: linear-gradient(90deg, #8c4caf, #c074dd);
+	--defesp-bar-bg: linear-gradient(90deg, #d8c941, #ecea97);
+	--spd-bar-bg: linear-gradient(90deg, #0f75b4, #5bafdb);
+	--normal-bg: #b7b7aa;
+	--fire-bg: #ff6f52;
+	--water-bg: #42a1ff;
+	--electric-bg: #fecc33;
+	--grass-bg: #78cc55;
+	--ice-bg: #66ccfe;
+	--fighting-bg: #d3887e;
+	--poison-bg: #971f79;
+	--ground-bg: #a38852;
+	--flying-bg: #8899ff;
+	--psychic-bg: #ff66a3;
+	--bug-bg: #aabb23;
+	--rock-bg: #baaa66;
+	--ghost-bg: #9995d0;
+	--dragon-bg: #9e93f1;
+	--dark-bg: #323232;
+	--steel-bg: #abaabb;
+	--fairy-bg: #ed99ed;
+	--light-one-blink: #d44281;
+	--ligh-one-shadow: pink;
+	--light-two-blink: #fafabf;
+	--light-two-shadow: #fafabf;
+	--light-three-blink: lightgreen;
+	--ligh-three-shadow: #aee9ae;
+}
+
 * {
 	padding: 0;
 	margin: 0;
@@ -6,10 +63,9 @@
 body {
 	height: 100vh;
 	width: 100%;
-	background-color: rgb(30, 30, 100);
+	background-color: var(--main-bg);
 }
 header {
-	/* background-color:red; */
 	width: 100%;
 	height: 80px;
 	display: flex;
@@ -18,9 +74,9 @@ header {
 	padding: 10px;
 }
 header h1 {
-	font-family: "Pokemon Solid", sans-serif;
-	color: yellow;
-	-webkit-text-stroke: 1px blue;
+	font-family: var(--header-font);
+	color: var(--header-color);
+	-webkit-text-stroke: var(--header-border);
 	font-weight: bold;
 	font-size: 2rem;
 }
@@ -35,12 +91,12 @@ main {
 	align-items: center;
 	flex-wrap: wrap;
 	position: relative;
-	font-family: monospace;
+	font-family: var(--principal-font);
 }
 /* Lil message for remember what have to do */
 .msg {
 	position: absolute;
-	background-color: yellow;
+	background-color: var(--header-color);
 	height: 80px;
 	width: 150px;
 	text-align: center;
@@ -54,9 +110,9 @@ main {
 }
 /* General class for every pokedex displays  */
 .pokedex {
-	background-color: red;
+	background-color: var(--dex-bg);
 	border-radius: 10px;
-	box-shadow: 0 0 10px gray;
+	box-shadow: 0 0 10px var(--shadows);
 }
 /* Display larger that contains the img of the pokemon and the form */
 .large {
@@ -76,8 +132,7 @@ main {
 	height: 70px;
 	width: 60%;
 	position: absolute;
-	background-color: red;
-	border-bottom: 2px solid black;
+	background-color: var(--dex-bg);
 	display: flex;
 	justify-content: space-around;
 }
@@ -85,17 +140,26 @@ main {
 	content: "";
 	position: absolute;
 	bottom: 0;
-	right: 0;
-	width: 2px;
+	left: 100%;
+	width: 4px;
 	height: 30%;
-	background-color: black;
+	background: linear-gradient(to right, #000000, #00000000);
+}
+.cam-section::before{
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 0;
+	width: 100%;
+	height: 3px;
+	background: linear-gradient(to bottom, #000000, #00000000);
 }
 .cam {
-	background-color: skyblue;
+	background-color: var(--cam-bg);
 	border-radius: 50%;
 	height: 40px;
 	width: 40px;
-	border: 3px solid rgb(87, 78, 78);
+	border: var(--border-cam);
 	margin-top: 10px;
 }
 .lights-container {
@@ -109,16 +173,16 @@ main {
 	width: 15px;
 	margin-top: 10px;
 	border-radius: 50%;
-	border: 3px solid rgb(102, 92, 92);
+	border: var(--lights-border);
 }
 .light:nth-child(1) {
-	background-color: #77063d;
+	background-color: var(--light-one-bg);
 }
 .light:nth-child(2) {
-	background-color: yellow;
+	background-color: var(--light-two-bg);
 }
 .light:nth-child(3) {
-	background-color: green;
+	background-color: var(--light-three-bg);
 }
 .light:nth-child(1).animated {
 	animation: blink-red 900ms infinite;
@@ -131,17 +195,24 @@ main {
 }
 /* Lil div for form the camera section */
 .cam-back {
-	background-color: inherit;
 	width: 100%;
 	height: 50px;
 	z-index: 1;
-	border-bottom: 2px solid black;
+}
+.cam-back::after{
+	content: "";
+	position: absolute;
+	top: 70%;
+	right: 0;
+	width: 40%;
+	height: 3px;
+	background: linear-gradient(to bottom, #000000, #00000000);
 }
 /* container of the img on the center */
 .img-container {
 	height: 250px;
 	width: 300px;
-	background-color: lightgray;
+	background-color: var(--sprite-container-bg);
 	margin: 30px auto;
 	border-radius: 10px 10px 10px 50px;
 	display: flex;
@@ -152,7 +223,7 @@ main {
 }
 /* lil screen where it will display the sprite */
 .img-display {
-	background-color: black;
+	background-color: var(--display-bg);
 	height: 200px;
 	width: 250px;
 	padding: 10px;
@@ -162,7 +233,7 @@ main {
 	align-items: center;
 	flex-direction: column;
 	gap: 5px;
-	color: white;
+	color: var(--font-color);
 }
 #sprite {
 	height: 180px;
@@ -173,12 +244,12 @@ main {
 	height: 150px;
 }
 #error-msg {
-	color: red;
+	color: var(--font-error-color);
 	font-size: 1.2rem;
 	font-weight: bold;
 }
 .shiny-btn{
-	color: yellow;
+	color: var(--header-color);
 	font-size: 1.5rem;
 	position: absolute;
 	background: transparent;
@@ -196,19 +267,17 @@ main {
 	transition: all 0.3s ease;
 }
 .shiny-btn:hover{
-	box-shadow: 0 1px 5px gray;
+	box-shadow: 0 1px 5px var(--shadows);
 }
 /* bottom part of the large dex where is the form */
 .bottom-container {
 	height: 100px;
 	width: 100%;
-	background-color: inherit;
 	display: flex;
 	border-radius: 10px;
 }
 form {
 	display: flex;
-	background-color: inherit;
 	width: 70%;
 	height: 100%;
 	justify-content: center;
@@ -220,7 +289,7 @@ form {
 #search-button {
 	width: 40px;
 	height: 40px;
-	background-color: #3b3838;
+	background-color: var(--bg-btns);
 	border-radius: 50%;
 	cursor: pointer;
 	transition: all 0.3s ease;
@@ -242,22 +311,22 @@ form {
 	border-radius: 10px;
 	outline: none;
 	border: none;
-	background-color: rgb(28, 189, 28);
-	color: black;
+	background-color: var(--input-bg);
+	color: var(--display-bg);
 	padding: 10px;
 	font-size: 0.9rem;
-	font-family: monospace;
+	font-family: var(--principal-font);
 }
 /* Suggestions of pokemons introduced on the input */
 #pkmn-suggestions {
 	position: absolute;
 	top: 80%;
 	left: 10%;
-	background-color: #328197;
+	background-color: var(--suggestion-bg);
 	border-radius: 10px;
 	width: 100%;
 	z-index: 1;
-	box-shadow: 0 0 10px gray;
+	box-shadow: 0 0 10px var(--shadows);
 	max-height: 200px;
 	overflow-y: auto;
 }
@@ -266,11 +335,11 @@ form {
 	width: 10px;
 }
 #pkmn-suggestions::-webkit-scrollbar-track {
-	background-color: #1e4d5c;
+	background-color: var(--suggestion-scroll-bg);
 	border-radius: 10px;
 }
 #pkmn-suggestions::-webkit-scrollbar-thumb {
-	background-color: #0f262e;
+	background-color: var(--suggestions-scroll);
 	border-radius: 10px;
 }
 /* If the suggestions container isn't empty generate a before */
@@ -281,8 +350,8 @@ form {
 	left: 50%;
 	height: 20px;
 	width: 20px;
-	background-color: #328197;
-	box-shadow: 0 0 10px gray;
+	background-color: var(--suggestion-bg);
+	box-shadow: 0 0 10px var(--shadows);
 	clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 }
 .suggestion {
@@ -297,7 +366,7 @@ form {
 }
 
 .suggestion:hover {
-	background-color: #f0f0f0;
+	background-color: var(--hover-suggestion);
 }
 .mini-sprite {
 	height: 50px;
@@ -306,7 +375,6 @@ form {
 .cross-container {
 	height: 100%;
 	width: 30%;
-	background-color: inherit;
 	border-radius: 0 0 10px 0;
 	display: flex;
 	justify-content: center;
@@ -316,13 +384,13 @@ form {
 .cross-vert {
 	height: 70px;
 	width: 20px;
-	background-color: black;
+	background-color: var(--display-bg);
 	position: absolute;
 }
 .cross-hor {
 	height: 20px;
 	width: 70px;
-	background-color: black;
+	background-color: var(--display-bg);
 	position: absolute;
 }
 /* design for the little dex where display the info about the pkmn */
@@ -335,14 +403,14 @@ form {
 .name-and-id {
 	height: 80px;
 	width: 100%;
-	background-color: black;
+	background-color: var(--display-bg);
 	border-radius: 10px;
-	color: white;
+	color: var(--font-color);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	padding: 10px;
-	font: normal normal normal 1.5rem monospace;
+	font-size:1.5rem;
 	gap: 60px;
 }
 .types {
@@ -359,16 +427,16 @@ form {
 	padding: 5px;
 	border-radius: 7px;
 	text-align: center;
-	font: normal normal normal 1rem monospace;
+	font: 1rem;
 	text-transform: uppercase;
-	color: white;
+	color: var(--font-color);
 }
 .size {
 	width: 100%;
-	background-color: black;
+	background-color: var(--display-bg);
 	height: 50px;
 	border-radius: 10px;
-	color: white;
+	color: var(--font-color);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -379,17 +447,16 @@ form {
 .stats {
 	height: 200px;
 	width: 100%;
-	background-color: black;
+	background-color: var(--display-bg);
 	margin-top: 20px;
 	border-radius: 10px;
-	color: white;
-	padding: 10px;
+	color: var(--font-color);
+	padding: 15px;
 }
 .stats-container {
 	height: 150px;
 	margin-top: 10px;
 	width: 100%;
-	padding: 10px;
 	font-size: 0.8rem;
 	display: flex;
 	flex-direction: column;
@@ -402,75 +469,75 @@ form {
 	width: 100%;
 }
 .progress-bar {
-	width: 50px;
+	width: 90px;
 	height: 10px;
 	border: none;
 	border-radius: 15px;
 	overflow: hidden;
-	background-color: #444444;
+	background-color: var(--progress-bg);
 }
 
 .progress-bar::-webkit-progress-bar {
-	background-color: #444444;
+	background-color: var(--progress-bg);
 }
 
 #hp-bar::-webkit-progress-value {
-	background: linear-gradient(90deg, #4caf50, #81c784);
+	background: var(--hp-bar-bg);
 	border-radius: 15px;
 }
 
 #hp-bar::-moz-progress-bar {
-	background: linear-gradient(90deg, #4caf50, #81c784);
+	background: var(hp);
 	border-radius: 15px;
 }
 
 #atk-bar::-webkit-progress-value {
-	background: linear-gradient(90deg, #b72121, #ea336a);
+	background: var(--atk-bar-bg);
 	border-radius: 15px;
 }
 
 #atk-bar::-moz-progress-bar {
-	background: linear-gradient(90deg, #b72121, #ea336a);
+	background: var(--atk-bar-bg);
 	border-radius: 15px;
 }
 
 #def-bar::-webkit-progress-value {
-	background: linear-gradient(90deg, #d2460e, #dd9519);
+	background: var(--def-bar-bg);
 	border-radius: 15px;
 }
 
 #def-bar::-moz-progress-bar {
-	background: linear-gradient(90deg, #d2460e, #dd9519);
+	background: var(--def-bar-bg);
 	border-radius: 15px;
 }
 
 #atkesp-bar::-webkit-progress-value {
-	background: linear-gradient(90deg, #8c4caf, #c074dd);
+	background: var(--atkesp-bar-bg);
 	border-radius: 15px;
 }
 
 #atkesp-bar::-moz-progress-bar {
-	background: linear-gradient(90deg, #8c4caf, #c074dd);
+	background: var(--atkesp-bar-bg);
 	border-radius: 15px;
 }
 
 #defesp-bar::-webkit-progress-value {
-	background: linear-gradient(90deg, #d8c941, #ecea97);
+	background: var(--defesp-bar-bg);
 	border-radius: 15px;
 }
 
 #defesp-bar::-moz-progress-bar {
-	background: linear-gradient(90deg, #d8c941, #ecea97);
+	background: var(--defesp-bar-bg);
 	border-radius: 15px;
 }
 
 #spd-bar::-webkit-progress-value {
-	background: linear-gradient(90deg, #0f75b4, #5bafdb);
+	background: var(--spd-bar-bg);
 	border-radius: 15px;
 }
 
 #spd-bar::-moz-progress-bar {
-	background: linear-gradient(90deg, #0f75b4, #5bafdb);
+	background:var(--spd-bar-bg);
 	border-radius: 15px;
 }
 /* centar part of the dex that joins both parts */
@@ -484,111 +551,111 @@ form {
 }
 /* types of pkmns  */
 .normal {
-	background-color: #b7b7aa;
+	background-color: var(--normal-bg);
 }
 
 .fire {
-	background-color: #ff6f52;
+	background-color: var(--fire-bg);
 }
 
 .water {
-	background-color: #42a1ff;
+	background-color: var(--water-bg);
 }
 
 .electric {
-	background-color: #fecc33;
+	background-color: var(--electric-bg);
 }
 
 .grass {
-	background-color: #78cc55;
+	background-color: var(--grass-bg);
 }
 
 .ice {
-	background-color: #66ccfe;
+	background-color: var(--ice-bg);
 }
 
 .fighting {
-	background-color: #d3887e;
+	background-color: var(--fighting-bg);
 }
 
 .poison {
-	background-color: #971f79;
+	background-color: var(--poison-bg);
 }
 
 .ground {
-	background-color: #dfba52;
+	background-color: var(--ground-bg);
 }
 
 .flying {
-	background-color: #8899ff;
+	background-color: var(--flying-bg);
 }
 
 .psychic {
-	background-color: #ff66a3;
+	background-color: var(--psychic-bg);
 }
 
 .bug {
-	background-color: #aabb23;
+	background-color: var(--bug-bg);
 }
 
 .rock {
-	background-color: #baaa66;
+	background-color: var(--rock-bg);
 }
 
 .ghost {
-	background-color: #9995d0;
+	background-color: var(--ghost-bg);
 }
 
 .dragon {
-	background-color: #9e93f1;
+	background-color: var(--dragon-bg);
 }
 
 .dark {
-	background-color: #b59682;
+	background-color: var(--dark-bg);
 }
 
 .steel {
-	background-color: #abaabb;
+	background-color: var(--steel-bg);
 }
 
 .fairy {
-	background-color: #ed99ed;
+	background-color: var(--fairy-bg);
 }
 /* Animation for lights above */
 @keyframes blink-red {
 	0% {
-		background-color: #77063d;
+		background-color: var(--light-one-bg);
 	}
 	50% {
-		background-color: #d44281;
-		box-shadow: 0 0 10px pink;
+		background-color: var(--light-one-blink);
+		box-shadow: 0 0 10px var(--ligh-one-shadow);
 	}
 	100% {
-		background-color: #77063d;
+		background-color: var(--light-one-bg);
 	}
 }
 @keyframes blink-yellow {
 	0% {
-		background-color: yellow;
+		background-color: var(--light-two-bg);
 	}
 	50% {
-		background-color: rgb(250, 250, 191);
-		box-shadow: 0 0 10px rgb(250, 250, 191);
+		background-color: var(--light-two-blink);
+		box-shadow: 0 0 10px var(--light-two-shadow);
 	}
 	100% {
-		background-color: yellow;
+		background-color: var(--light-two-bg);
 	}
 }
 @keyframes blink-green {
 	0% {
-		background-color: green;
+		background-color: var(--light-three-bg);
 	}
 	50% {
-		background-color: lightgreen;
-		box-shadow: 0 0 10px rgb(174, 233, 174);
+		background-color: var(--light-three-blink);
+		box-shadow: 0 0 10px var(--ligh-three-shadow);
 	}
 	100% {
-		background-color: green;
+		background-color: var(--light-three-bg);
 	}
 }
 
@@ -608,7 +675,7 @@ form {
 		font-size: 1.5rem;
 		top: -50px;
 		right: -10px;	
-		background-color: #3b3838;
+		background-color: var(--bg-btns);
 	}
 	.shiny-btn:active{
 		background-color: #3a3232;
@@ -625,7 +692,6 @@ form {
 	.center {
 		position: fixed;
 		z-index: -1;
-		background-color: red;
 		height: 300px;
 		width: 200px;
 		top: 50%;
