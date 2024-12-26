@@ -16,7 +16,6 @@ const imgDisplay = document.getElementById("img-display");
 const form = document.getElementById("form");
 const lights = document.querySelectorAll(".light");
 const shinyBtn = document.getElementById("shiny-btn");
-
 // array to collect all the pokemons
 let allPokemons = [];
 
@@ -72,38 +71,38 @@ const filterPokemons = (search) => {
 		.filter(
 			(pkmn) =>
 				pkmn.name.includes(search.toLowerCase()) ||
-				pkmn.id.toString().includes(search)
+			pkmn.id.toString().includes(search)
 		)
 		.slice(0, 10);
-};
-// Function to create the div element for the suggestions
-const createSelect = () => {
-	const existing = document.getElementById("pkmn-suggestions");
-	if (existing) existing.remove();
+	};
+	// Function to create the div element for the suggestions
+	const createSelect = () => {
+		const existing = document.getElementById("pkmn-suggestions");
+		if (existing) existing.remove();
 
-	const selectContainer = document.createElement("div");
-	selectContainer.id = "pkmn-suggestions";
-	form.appendChild(selectContainer);
-
-	return selectContainer;
-};
-searchInput.addEventListener("input", (e) => {
+		const selectContainer = document.createElement("div");
+		selectContainer.id = "pkmn-suggestions";
+		form.appendChild(selectContainer);
+		
+		return selectContainer;
+	};
+	searchInput.addEventListener("input", (e) => {
 	// Obtain the value of the input
 	const search = e.target.value.trim();
 	// Create the div element for the suggestions
 	const selectContainer = createSelect();
-
+	
 	// Filter the pokemons by the search input
 	if (search.length > 0) {
 		const matches = filterPokemons(search);
 		// Create the suggestions
 		selectContainer.innerHTML = matches
-			.map(
+		.map(
 				(pkmn) =>
 					`<div class="suggestion" data-name="${pkmn.name}" data-id="${pkmn.id}">${pkmn.name} (#${pkmn.id}) <img class="mini-sprite" src="${pkmn.sprite}" alt="${pkmn.name} mini sprite"></div>`
 			)
 			.join("");
-		// Add event listener to the suggestions
+			// Add event listener to the suggestions
 		selectContainer
 			.querySelectorAll(".suggestion")
 			.forEach((suggestion) => {
@@ -114,7 +113,7 @@ searchInput.addEventListener("input", (e) => {
 					animateLights();
 				});
 			});
-	} else {
+		} else {
 		selectContainer.remove();
 	}
 });
@@ -147,13 +146,15 @@ const getPoke = async (pkmnNameOrId) => {
 		const pokemonCry=new Audio()
 		pokemonCry.src= `https://play.pokemonshowdown.com/audio/cries/${cryName}.mp3`;
 		// Display the sprites
-		imgDisplay.innerHTML = `<img id="sprite" src="${frontSprite}" alt="${data.name} front default sprite">`;
+		imgDisplay.innerHTML = `<img id="sprite" src="${frontSprite}" alt="${data.name} front default sprite">
+		<div id="sparkles-container"></div>`;
 		// Obtain the new sprite element
 		const sprite = document.getElementById("sprite");
 		pokemonCry.play();
 		// Set the sprite to change every 3 seconds
 		let isFront = true;
 		let spriteInterval
+		const sparkleContainer=document.getElementById("sparkles-container");
 		spriteInterval=setInterval(() => {
 			if (isFront) {
 				sprite.src = backSprite;
@@ -165,9 +166,31 @@ const getPoke = async (pkmnNameOrId) => {
 			isFront = !isFront;
 		}, 3000);
 		shinyBtn.addEventListener("click", () => {
+			const existingSparkles=document.querySelectorAll(".sparkle");
+			if(existingSparkles.length>0){
+				existingSparkles.forEach(sparkle=>sparkle.remove());
+			}
 			clearInterval(spriteInterval);
 			sprite.classList.toggle("shiny");
 			if(sprite.classList.contains("shiny")){
+				setTimeout(()=>
+					sparkleContainer.innerHTML=`
+					<div class="sparkle">
+						<i class="fa-duotone fa-solid fa-sparkles"></i>
+					</div>
+					<div class="sparkle">
+						<i class="fa-duotone fa-solid fa-sparkles"></i>
+					</div>
+					<div class="sparkle">
+						<i class="fa-duotone fa-solid fa-sparkles"></i>
+					</div>
+					<div class="sparkle">
+						<i class="fa-duotone fa-solid fa-sparkles"></i>
+					</div>
+					<div class="sparkle">
+						<i class="fa-duotone fa-solid fa-sparkles"></i>
+					</div>`
+				,3200);
 				spriteInterval=setInterval(() => {
 					if (isFront) {
 						sprite.src = backShinySprite;
@@ -209,8 +232,8 @@ const getPoke = async (pkmnNameOrId) => {
 		hpElement.innerHTML = `Hp: ${data.stats[0].base_stat} <progress value="${data.stats[0].base_stat}" max="255" class="progress-bar" id="hp-bar"></progress>`;
 		attackElement.innerHTML = `Attack: ${data.stats[1].base_stat} <progress value="${data.stats[1].base_stat}" max="255" class="progress-bar" id="atk-bar"></progress>`;
 		defenseElement.innerHTML = `Defense: ${data.stats[2].base_stat} <progress value="${data.stats[2].base_stat}" max="255" class="progress-bar" id="def-bar"></progress>`;
-		spAtElement.innerHTML = `Special Attack: ${data.stats[3].base_stat} <progress value="${data.stats[3].base_stat}" max="255" class="progress-bar" id="atkesp-bar"></progress>`;
-		spDefElement.innerHTML = `Special Defense: ${data.stats[4].base_stat} <progress value="${data.stats[4].base_stat}" max="255" class="progress-bar" id="defesp-bar"></progress>`;
+		spAtElement.innerHTML = `Sp. Attack: ${data.stats[3].base_stat} <progress value="${data.stats[3].base_stat}" max="255" class="progress-bar" id="atkesp-bar"></progress>`;
+		spDefElement.innerHTML = `Sp. Defense: ${data.stats[4].base_stat} <progress value="${data.stats[4].base_stat}" max="255" class="progress-bar" id="defesp-bar"></progress>`;
 		speedElement.innerHTML = `Speed: ${data.stats[5].base_stat} <progress value="${data.stats[5].base_stat}" max="255" class="progress-bar" id="spd-bar"></progress>`;
 	} catch (err) {
 		// If the pokemon is not found, clean the pokedex and show an alert
