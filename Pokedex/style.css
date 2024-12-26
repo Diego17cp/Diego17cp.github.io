@@ -179,7 +179,7 @@ main {
 }
 .shiny-btn{
 	color: yellow;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	position: absolute;
 	background: transparent;
 	outline: none;
@@ -192,7 +192,6 @@ main {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* background-color: green; */
 	border-radius: 50%;
 	transition: all 0.3s ease;
 }
@@ -221,7 +220,7 @@ form {
 #search-button {
 	width: 40px;
 	height: 40px;
-	background-color: #504c4c;
+	background-color: #3b3838;
 	border-radius: 50%;
 	cursor: pointer;
 	transition: all 0.3s ease;
@@ -231,7 +230,7 @@ form {
 	margin-bottom: 30px;
 }
 #search-button:hover {
-	background-color: #3a3232;
+	background-color: #424040;
 }
 #search-button:active {
 	background-color: #3a3232;
@@ -607,7 +606,12 @@ form {
 		font-size: 1.5rem;
 		top: -50px;
 		right: -10px;	
-		background-color: #0f262e;
+		background-color: #3b3838;
+	}
+	.shiny-btn:active{
+		background-color: #3a3232;
+		transform: translateY(4px);
+		box-shadow: 0 2px 3px #00000080;
 	}
 	.lil {
 		margin: 15px 10px;
@@ -647,8 +651,8 @@ form {
 	}
 	.shiny-btn{
 		font-size: 1.2rem;
-		top: -45px;
-		right: -10px;	
+		top: 114%;
+		right: 40%;	
 	}
 	.bottom-container {
 		height: 120px;
@@ -662,6 +666,7 @@ form {
 		width: 40px;
 		height: 40px;
 		margin-bottom: 5px;
+		margin-right: 40px;
 	}
 	#search-input {
 		height: 30px;
