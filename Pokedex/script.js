@@ -126,8 +126,12 @@ const search = async () => {
 		searchInput.value = "";
 	}
 };
+// Function to format the pokemons with 2 megas for its cries
+const formatMega= (name) => {
+	return name.replace("-mega-", "-mega")
+	// it's a special case for charizard and mewtwo
+}
 // Function for get the pokemon selected
-
 const getPoke = async (pkmnNameOrId) => {
 	try {
 		const response = await fetch(
@@ -139,10 +143,14 @@ const getPoke = async (pkmnNameOrId) => {
 		const backSprite = data.sprites.back_default;
 		const frontShinySprite= data.sprites.front_shiny;
 		const backShinySprite= data.sprites.back_shiny;
+		const cryName=formatMega(data.name);
+		const pokemonCry=new Audio()
+		pokemonCry.src= `https://play.pokemonshowdown.com/audio/cries/${cryName}.mp3`;
 		// Display the sprites
 		imgDisplay.innerHTML = `<img id="sprite" src="${frontSprite}" alt="${data.name} front default sprite">`;
 		// Obtain the new sprite element
 		const sprite = document.getElementById("sprite");
+		pokemonCry.play();
 		// Set the sprite to change every 3 seconds
 		let isFront = true;
 		let spriteInterval
