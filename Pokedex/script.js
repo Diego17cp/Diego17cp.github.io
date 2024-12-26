@@ -15,6 +15,7 @@ const speedElement = document.getElementById("speed");
 const imgDisplay = document.getElementById("img-display");
 const form = document.getElementById("form");
 const lights = document.querySelectorAll(".light");
+const shinyBtn = document.getElementById("shiny-btn");
 
 // array to collect all the pokemons
 let allPokemons = [];
@@ -136,13 +137,16 @@ const getPoke = async (pkmnNameOrId) => {
 		// Obtain the sprites from the API
 		const frontSprite = data.sprites.front_default;
 		const backSprite = data.sprites.back_default;
+		const frontShinySprite= data.sprites.front_shiny;
+		const backShinySprite= data.sprites.back_shiny;
 		// Display the sprites
 		imgDisplay.innerHTML = `<img id="sprite" src="${frontSprite}" alt="${data.name} front default sprite">`;
 		// Obtain the new sprite element
 		const sprite = document.getElementById("sprite");
 		// Set the sprite to change every 3 seconds
 		let isFront = true;
-		setInterval(() => {
+		let spriteInterval
+		spriteInterval=setInterval(() => {
 			if (isFront) {
 				sprite.src = backSprite;
 				sprite.alt = `${data.name} back default sprite`;
@@ -152,6 +156,35 @@ const getPoke = async (pkmnNameOrId) => {
 			}
 			isFront = !isFront;
 		}, 3000);
+		shinyBtn.addEventListener("click", () => {
+			clearInterval(spriteInterval);
+			sprite.classList.toggle("shiny");
+			if(sprite.classList.contains("shiny")){
+				spriteInterval=setInterval(() => {
+					if (isFront) {
+						sprite.src = backShinySprite;
+						sprite.alt = `${data.name} back shiny sprite`;
+					} else {
+						sprite.src = frontShinySprite;
+						sprite.alt = `${data.name} front shiny sprite`;
+					}
+					isFront = !isFront;
+				}, 3000);
+			}
+			else{
+				spriteInterval=setInterval(() => {
+					if (isFront) {
+						sprite.src = backSprite;
+						sprite.alt = `${data.name} back default sprite`;
+					} else {
+						sprite.src = frontSprite;
+						sprite.alt = `${data.name} front default sprite`;
+					}
+					isFront = !isFront;
+				}, 3000);
+			}
+		})
+		
 		// Display the data of the pokemon on the little pokedex
 		nameElement.textContent = `${data.name.toUpperCase()}`;
 		idElement.textContent = `#${data.id < 100 ? `0${data.id}` : data.id}`;
@@ -165,7 +198,6 @@ const getPoke = async (pkmnNameOrId) => {
 		const heightInM = data.height / 10;
 		weightElement.textContent = `Weight: ${weightInKg}kg`;
 		heightElement.textContent = `Height: ${heightInM}m`;
-		// hpElement.textContent = `HP: ${data.stats[0].base_stat}`;
 		hpElement.innerHTML = `Hp: ${data.stats[0].base_stat} <progress value="${data.stats[0].base_stat}" max="255" class="progress-bar" id="hp-bar"></progress>`;
 		attackElement.innerHTML = `Attack: ${data.stats[1].base_stat} <progress value="${data.stats[1].base_stat}" max="255" class="progress-bar" id="atk-bar"></progress>`;
 		defenseElement.innerHTML = `Defense: ${data.stats[2].base_stat} <progress value="${data.stats[2].base_stat}" max="255" class="progress-bar" id="def-bar"></progress>`;
