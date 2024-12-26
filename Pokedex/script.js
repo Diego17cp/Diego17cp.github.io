@@ -165,12 +165,13 @@ const getPoke = async (pkmnNameOrId) => {
 		const heightInM = data.height / 10;
 		weightElement.textContent = `Weight: ${weightInKg}kg`;
 		heightElement.textContent = `Height: ${heightInM}m`;
-		hpElement.textContent = `HP: ${data.stats[0].base_stat}`;
-		attackElement.textContent = `Attack: ${data.stats[1].base_stat}`;
-		defenseElement.textContent = `Defense: ${data.stats[2].base_stat}`;
-		spAtElement.textContent = `Special Attack: ${data.stats[3].base_stat}`;
-		spDefElement.textContent = `Special Defense: ${data.stats[4].base_stat}`;
-		speedElement.textContent = `Speed: ${data.stats[5].base_stat}`;
+		// hpElement.textContent = `HP: ${data.stats[0].base_stat}`;
+		hpElement.innerHTML=`Hp: ${data.stats[0].base_stat} <progress value="${data.stats[0].base_stat}" max="255" class="progress-bar" id="hp-bar"></progress>`;
+		attackElement.innerHTML = `Attack: ${data.stats[1].base_stat} <progress value="${data.stats[1].base_stat}" max="255" class="progress-bar" id="atk-bar"></progress>`;
+		defenseElement.innerHTML = `Defense: ${data.stats[2].base_stat} <progress value="${data.stats[2].base_stat}" max="255" class="progress-bar" id="def-bar"></progress>`;
+		spAtElement.innerHTML = `Special Attack: ${data.stats[3].base_stat} <progress value="${data.stats[3].base_stat}" max="255" class="progress-bar" id="atkesp-bar"></progress>`;
+		spDefElement.innerHTML = `Special Defense: ${data.stats[4].base_stat} <progress value="${data.stats[4].base_stat}" max="255" class="progress-bar" id="defesp-bar"></progress>`;
+		speedElement.innerHTML = `Speed: ${data.stats[5].base_stat} <progress value="${data.stats[5].base_stat}" max="255" class="progress-bar" id="spd-bar"></progress>`;
 	} catch (err) {
 		// If the pokemon is not found, clean the pokedex and show an alert
 		cleanAll();
