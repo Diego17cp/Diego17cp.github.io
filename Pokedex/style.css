@@ -364,88 +364,88 @@ form {
 	margin-top: 10px;
 	width: 100%;
 	padding: 10px;
-	font-size: .8rem;
+	font-size: 0.8rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 }
-.stat{
+.stat {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	width: 100%;
 }
 .progress-bar {
-    width: 50px;
-    height: 10px;
-    border: none;
-    border-radius: 15px;
-    overflow: hidden;
+	width: 50px;
+	height: 10px;
+	border: none;
+	border-radius: 15px;
+	overflow: hidden;
 	background-color: #444444;
 }
 
 .progress-bar::-webkit-progress-bar {
-    background-color: #444444;
+	background-color: #444444;
 }
 
 #hp-bar::-webkit-progress-value {
-    background: linear-gradient(90deg, #4caf50, #81c784);
-    border-radius: 15px;
+	background: linear-gradient(90deg, #4caf50, #81c784);
+	border-radius: 15px;
 }
 
 #hp-bar::-moz-progress-bar {
-    background: linear-gradient(90deg, #4caf50, #81c784);
-    border-radius: 15px;
+	background: linear-gradient(90deg, #4caf50, #81c784);
+	border-radius: 15px;
 }
 
 #atk-bar::-webkit-progress-value {
-    background: linear-gradient(90deg, #b72121, #ea336a);
-    border-radius: 15px;
+	background: linear-gradient(90deg, #b72121, #ea336a);
+	border-radius: 15px;
 }
 
 #atk-bar::-moz-progress-bar {
-    background: linear-gradient(90deg, #b72121, #ea336a);
-    border-radius: 15px;
+	background: linear-gradient(90deg, #b72121, #ea336a);
+	border-radius: 15px;
 }
 
 #def-bar::-webkit-progress-value {
-    background: linear-gradient(90deg, #d2460e, #dd9519);
-    border-radius: 15px;
+	background: linear-gradient(90deg, #d2460e, #dd9519);
+	border-radius: 15px;
 }
 
 #def-bar::-moz-progress-bar {
-    background: linear-gradient(90deg, #d2460e, #dd9519);
-    border-radius: 15px;
+	background: linear-gradient(90deg, #d2460e, #dd9519);
+	border-radius: 15px;
 }
 
 #atkesp-bar::-webkit-progress-value {
-    background: linear-gradient(90deg, #8c4caf, #c074dd);
-    border-radius: 15px;
+	background: linear-gradient(90deg, #8c4caf, #c074dd);
+	border-radius: 15px;
 }
 
 #atkesp-bar::-moz-progress-bar {
-    background: linear-gradient(90deg, #8c4caf, #c074dd);
-    border-radius: 15px;
+	background: linear-gradient(90deg, #8c4caf, #c074dd);
+	border-radius: 15px;
 }
 
 #defesp-bar::-webkit-progress-value {
-    background: linear-gradient(90deg, #d8c941, #ecea97);
-    border-radius: 15px;
+	background: linear-gradient(90deg, #d8c941, #ecea97);
+	border-radius: 15px;
 }
 
 #defesp-bar::-moz-progress-bar {
-    background: linear-gradient(90deg, #d8c941, #ecea97);
-    border-radius: 15px;
+	background: linear-gradient(90deg, #d8c941, #ecea97);
+	border-radius: 15px;
 }
 
 #spd-bar::-webkit-progress-value {
-    background: linear-gradient(90deg, #0f75b4, #5bafdb);
-    border-radius: 15px;
+	background: linear-gradient(90deg, #0f75b4, #5bafdb);
+	border-radius: 15px;
 }
 
 #spd-bar::-moz-progress-bar {
-    background: linear-gradient(90deg, #0f75b4, #5bafdb);
-    border-radius: 15px;
+	background: linear-gradient(90deg, #0f75b4, #5bafdb);
+	border-radius: 15px;
 }
 /* centar part of the dex that joins both parts */
 .center {

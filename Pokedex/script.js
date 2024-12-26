@@ -166,7 +166,7 @@ const getPoke = async (pkmnNameOrId) => {
 		weightElement.textContent = `Weight: ${weightInKg}kg`;
 		heightElement.textContent = `Height: ${heightInM}m`;
 		// hpElement.textContent = `HP: ${data.stats[0].base_stat}`;
-		hpElement.innerHTML=`Hp: ${data.stats[0].base_stat} <progress value="${data.stats[0].base_stat}" max="255" class="progress-bar" id="hp-bar"></progress>`;
+		hpElement.innerHTML = `Hp: ${data.stats[0].base_stat} <progress value="${data.stats[0].base_stat}" max="255" class="progress-bar" id="hp-bar"></progress>`;
 		attackElement.innerHTML = `Attack: ${data.stats[1].base_stat} <progress value="${data.stats[1].base_stat}" max="255" class="progress-bar" id="atk-bar"></progress>`;
 		defenseElement.innerHTML = `Defense: ${data.stats[2].base_stat} <progress value="${data.stats[2].base_stat}" max="255" class="progress-bar" id="def-bar"></progress>`;
 		spAtElement.innerHTML = `Special Attack: ${data.stats[3].base_stat} <progress value="${data.stats[3].base_stat}" max="255" class="progress-bar" id="atkesp-bar"></progress>`;
