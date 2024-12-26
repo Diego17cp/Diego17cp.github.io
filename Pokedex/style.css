@@ -50,6 +50,7 @@ main {
 	top: 150px;
 	left: 10%;
 	transform: rotate(-10deg);
+	z-index: 2;
 }
 /* General class for every pokedex displays  */
 .pokedex {
@@ -146,6 +147,8 @@ main {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
+	z-index: 1;
 }
 /* lil screen where it will display the sprite */
 .img-display {
@@ -173,6 +176,28 @@ main {
 	color: red;
 	font-size: 1.2rem;
 	font-weight: bold;
+}
+.shiny-btn{
+	color: yellow;
+	font-size: 2rem;
+	position: absolute;
+	background: transparent;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	top: 32px;
+	right: 32px;
+	z-index: 120;
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* background-color: green; */
+	border-radius: 50%;
+	transition: all 0.3s ease;
+}
+.shiny-btn:hover{
+	box-shadow: 0 1px 5px gray;
 }
 /* bottom part of the large dex where is the form */
 .bottom-container {
@@ -578,6 +603,12 @@ form {
 	#error-msg {
 		font-size: 1rem;
 	}
+	.shiny-btn{
+		font-size: 1.5rem;
+		top: -50px;
+		right: -10px;	
+		background-color: #0f262e;
+	}
 	.lil {
 		margin: 15px 10px;
 	}
@@ -613,6 +644,11 @@ form {
 	}
 	.img-display {
 		width: 200px;
+	}
+	.shiny-btn{
+		font-size: 1.2rem;
+		top: -45px;
+		right: -10px;	
 	}
 	.bottom-container {
 		height: 120px;
