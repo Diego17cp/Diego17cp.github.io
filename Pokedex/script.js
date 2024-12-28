@@ -67,42 +67,41 @@ const fetchAllPokemons = async () => {
 };
 // Function to filter the pokemons by the search input
 const filterPokemons = (search) => {
-	return allPokemons
-		.filter(
-			(pkmn) =>
-				pkmn.name.includes(search.toLowerCase()) ||
+	return allPokemons.filter(
+		(pkmn) =>
+			pkmn.name.includes(search.toLowerCase()) ||
 			pkmn.id.toString().includes(search)
-		)
-		.slice(0, 10);
-	};
-	// Function to create the div element for the suggestions
-	const createSelect = () => {
-		const existing = document.getElementById("pkmn-suggestions");
-		if (existing) existing.remove();
+	);
+	// .slice(0, 10);
+};
+// Function to create the div element for the suggestions
+const createSelect = () => {
+	const existing = document.getElementById("pkmn-suggestions");
+	if (existing) existing.remove();
 
-		const selectContainer = document.createElement("div");
-		selectContainer.id = "pkmn-suggestions";
-		form.appendChild(selectContainer);
-		
-		return selectContainer;
-	};
-	searchInput.addEventListener("input", (e) => {
+	const selectContainer = document.createElement("div");
+	selectContainer.id = "pkmn-suggestions";
+	form.appendChild(selectContainer);
+
+	return selectContainer;
+};
+searchInput.addEventListener("input", (e) => {
 	// Obtain the value of the input
 	const search = e.target.value.trim();
 	// Create the div element for the suggestions
 	const selectContainer = createSelect();
-	
+
 	// Filter the pokemons by the search input
 	if (search.length > 0) {
 		const matches = filterPokemons(search);
 		// Create the suggestions
 		selectContainer.innerHTML = matches
-		.map(
+			.map(
 				(pkmn) =>
 					`<div class="suggestion" data-name="${pkmn.name}" data-id="${pkmn.id}">${pkmn.name} (#${pkmn.id}) <img class="mini-sprite" src="${pkmn.sprite}" alt="${pkmn.name} mini sprite"></div>`
 			)
 			.join("");
-			// Add event listener to the suggestions
+		// Add event listener to the suggestions
 		selectContainer
 			.querySelectorAll(".suggestion")
 			.forEach((suggestion) => {
@@ -113,7 +112,7 @@ const filterPokemons = (search) => {
 					animateLights();
 				});
 			});
-		} else {
+	} else {
 		selectContainer.remove();
 	}
 });
@@ -125,11 +124,87 @@ const search = async () => {
 		searchInput.value = "";
 	}
 };
-// Function to format the pokemons with 2 megas for its cries
-const formatMega= (name) => {
-	return name.replace("-mega-", "-mega")
-	// it's a special case for charizard and mewtwo
-}
+// Function to format the pokemons with different names between the API and the cries
+const formatName = (name) => {
+	const replacePatterns = {
+		"-mega-": "-mega",
+		"mr-": "mr",
+		"-jr": "jr",
+		"tapu-": "tapu",
+		"iron-": "iron",
+		"rapid-strike": "rapidstrike",
+		"-dawn": "-dawnwings",
+		"-f": "f",
+		"-m": "m",
+		"-o": "o",
+	};
+	
+	const directReturns = {
+		"ho-oh": "hooh",
+		"porygon-z": "porygonz",
+		"type-null": "typenull",
+		"zygarde-50": "zygarde",
+		"lycanroc-midday": "lycanroc",
+		"wishiwashi-solo": "wishiwashi",
+		"eiscue-ice": "eiscue",
+		"indeedee-male": "indeedee",
+		"indeede-female": "indeedef",
+		"morpeko-full-belly": "morpeko",
+		"urshifu-single-strike": "urshifu",
+		"oinkologne-male": "oinkologne",
+		"oinkologne-female": "oinkologne-f",
+		"palafin-zero": "palafin",
+		"necrozma-dusk": "necrozma-duskmane",
+	};
+
+	const simpleNames = [
+		"deoxys",
+		"wormadam",
+		"rotom",
+		"giratina",
+		"shaymin",
+		"basculin",
+		"darmanitan",
+		"keldeo",
+		"meloetta",
+		"meowstic",
+		"aegislash",
+		"pumpkaboo",
+		"gourgeist",
+		"oricorio",
+		"minior",
+		"mimikyu",
+		"toxtricity",
+		"basculegion",
+		"castform",
+		"squawkabilly",
+	];
+
+	if (directReturns[name]) return directReturns[name];
+
+	if (simpleNames.some((simpleName) => name.includes(simpleName))) {
+		return name.split("-")[0];
+	}
+
+	const variants = [
+		"-galar",
+		"-gmax",
+		"-alola",
+		"-hisui",
+		"-paldea",
+		"-incarnate",
+		"-therian",
+	];
+	for (const variant of variants) {
+		if (name.includes(variant)) return name.replace(variant, "");
+	}
+
+	for (const [pattern, replacement] of Object.entries(replacePatterns)) {
+		if (name.includes(pattern)) return name.replace(pattern, replacement);
+	}
+
+	return name;
+};
 // Function for get the pokemon selected
 const getPoke = async (pkmnNameOrId) => {
 	try {
@@ -140,11 +215,11 @@ const getPoke = async (pkmnNameOrId) => {
 		// Obtain the sprites from the API
 		const frontSprite = data.sprites.front_default;
 		const backSprite = data.sprites.back_default;
-		const frontShinySprite= data.sprites.front_shiny;
-		const backShinySprite= data.sprites.back_shiny;
-		const cryName=formatMega(data.name);
-		const pokemonCry=new Audio()
-		pokemonCry.src= `https://play.pokemonshowdown.com/audio/cries/${cryName}.mp3`;
+		const frontShinySprite = data.sprites.front_shiny;
+		const backShinySprite = data.sprites.back_shiny;
+		const cryName = formatName(data.name);
+		const pokemonCry = new Audio();
+		pokemonCry.src = `https://play.pokemonshowdown.com/audio/cries/${cryName}.mp3`;
 		// Display the sprites
 		imgDisplay.innerHTML = `<img id="sprite" src="${frontSprite}" alt="${data.name} front default sprite">
 		<div id="sparkles-container"></div>`;
@@ -153,9 +228,9 @@ const getPoke = async (pkmnNameOrId) => {
 		pokemonCry.play();
 		// Set the sprite to change every 3 seconds
 		let isFront = true;
-		let spriteInterval
-		const sparkleContainer=document.getElementById("sparkles-container");
-		spriteInterval=setInterval(() => {
+		let spriteInterval;
+		const sparkleContainer = document.getElementById("sparkles-container");
+		spriteInterval = setInterval(() => {
 			if (isFront) {
 				sprite.src = backSprite;
 				sprite.alt = `${data.name} back default sprite`;
@@ -166,15 +241,16 @@ const getPoke = async (pkmnNameOrId) => {
 			isFront = !isFront;
 		}, 3000);
 		shinyBtn.addEventListener("click", () => {
-			const existingSparkles=document.querySelectorAll(".sparkle");
-			if(existingSparkles.length>0){
-				existingSparkles.forEach(sparkle=>sparkle.remove());
+			const existingSparkles = document.querySelectorAll(".sparkle");
+			if (existingSparkles.length > 0) {
+				existingSparkles.forEach((sparkle) => sparkle.remove());
 			}
 			clearInterval(spriteInterval);
 			sprite.classList.toggle("shiny");
-			if(sprite.classList.contains("shiny")){
-				setTimeout(()=>
-					sparkleContainer.innerHTML=`
+			if (sprite.classList.contains("shiny")) {
+				setTimeout(
+					() =>
+						(sparkleContainer.innerHTML = `
 					<div class="sparkle">
 						<i class="fa-duotone fa-solid fa-sparkles"></i>
 					</div>
@@ -189,9 +265,10 @@ const getPoke = async (pkmnNameOrId) => {
 					</div>
 					<div class="sparkle">
 						<i class="fa-duotone fa-solid fa-sparkles"></i>
-					</div>`
-				,3200);
-				spriteInterval=setInterval(() => {
+					</div>`),
+					3200
+				);
+				spriteInterval = setInterval(() => {
 					if (isFront) {
 						sprite.src = backShinySprite;
 						sprite.alt = `${data.name} back shiny sprite`;
@@ -201,9 +278,8 @@ const getPoke = async (pkmnNameOrId) => {
 					}
 					isFront = !isFront;
 				}, 3000);
-			}
-			else{
-				spriteInterval=setInterval(() => {
+			} else {
+				spriteInterval = setInterval(() => {
 					if (isFront) {
 						sprite.src = backSprite;
 						sprite.alt = `${data.name} back default sprite`;
@@ -214,8 +290,8 @@ const getPoke = async (pkmnNameOrId) => {
 					isFront = !isFront;
 				}, 3000);
 			}
-		})
-		
+		});
+
 		// Display the data of the pokemon on the little pokedex
 		nameElement.textContent = `${data.name.toUpperCase()}`;
 		idElement.textContent = `#${data.id < 100 ? `0${data.id}` : data.id}`;
