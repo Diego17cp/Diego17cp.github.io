@@ -185,7 +185,7 @@ const formatName = (name) => {
 	if (simpleNames.some((simpleName) => name.includes(simpleName))) {
 		return name.split("-")[0];
 	}
-
+	if (name.endsWith("-mega")) return name;
 	const variants = [
 		"-galar",
 		"-gmax",
